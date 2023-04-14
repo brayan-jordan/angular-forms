@@ -6,9 +6,10 @@ import { AppComponent } from "./app.component";
 import { CadastroComponent } from "./cadastro/cadastro.component";
 import { SucessoCadastroComponent } from "./sucesso-cadastro/sucesso-cadastro.component";
 import { FormsModule } from "@angular/forms";
+import { MensagemComponent } from './components/mensagem/mensagem.component';
 
 @NgModule({
-  declarations: [AppComponent, CadastroComponent, SucessoCadastroComponent],
+  declarations: [AppComponent, CadastroComponent, SucessoCadastroComponent, MensagemComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

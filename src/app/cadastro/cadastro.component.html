@@ -17,20 +17,19 @@
         ngModel
         required
         minlength="2"
+        #nome="ngModel"
       />
       <!-- usado para atualizações enquanto o usuário digita -->
       <!-- || f.controls['nome']?.dirty -->
-      <div *ngIf="f.controls['nome']?.invalid && f.controls['nome']?.touched">
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['nome']?.errors?.['required']"
-          >O campo de nome é obrigatório.</span
-        >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['nome']?.errors?.['minlength']"
-          >O nome deve ter no mínimo 2 caractéres.</span
-        >
+      <div *ngIf="nome?.invalid && nome?.touched">
+        <app-mensagem
+          [mensagem]="'O campo de nome é obrigatório.'"
+          *ngIf="nome?.errors?.['required']"
+        ></app-mensagem>
+        <app-mensagem
+          [mensagem]="'O nome deve ter no mínimo 2 caractéres.'"
+          *ngIf="nome?.errors?.['minlength']"
+        ></app-mensagem>
       </div>
     </div>
     <div class="formulario__dupla">
@@ -55,25 +54,17 @@
           ngModel
           required
           pattern="(\(?\d{2}\)?\s?)(\d{5}\-?\d{4})"
+          #telefone="ngModel"
         />
-        <!-- usado para atualizações enquanto o usuário digita -->
-        <!-- || f.controls['telefone']?.dirty -->
-        <div
-          *ngIf="
-            f.controls['telefone']?.invalid && f.controls['telefone']?.touched
-          "
-        >
-          <span
-            class="erro__texto"
-            *ngIf="f.controls['telefone']?.errors?.['required']"
-            >O campo de telefone é obrigatório.</span
-          >
-          <span
-            class="erro__texto"
-            *ngIf="f.controls['telefone']?.errors?.['pattern']"
-          >
-            O campo de telefone deve ser um telefone válido.
-          </span>
+        <div *ngIf="telefone?.invalid && telefone?.touched">
+          <app-mensagem
+            [mensagem]="'O campo de telefone é obrigatório.'"
+            *ngIf="telefone?.errors?.['required']"
+          ></app-mensagem>
+          <app-mensagem
+            [mensagem]="'O telefone deve ser um telefone válido .'"
+            *ngIf="telefone?.errors?.['pattern']"
+          ></app-mensagem>
         </div>
       </div>
     </div>
@@ -87,21 +78,17 @@
         ngModel
         required
         pattern="^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$"
+        #email="ngModel"
       />
-      <!-- usado para atualizações enquanto o usuário digita -->
-      <!-- || f.controls['email']?.dirty -->
-      <div *ngIf="f.controls['email']?.invalid && f.controls['email']?.touched">
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['email']?.errors?.['required']"
-          >O campo de email é obrigatório.</span
-        >
-        <span
-          class="erro__texto"
-          *ngIf="f.controls['email']?.errors?.['pattern']"
-        >
-          O campo de email deve ser um email válido.
-        </span>
+      <div *ngIf="email?.invalid && email?.touched">
+        <app-mensagem
+          [mensagem]="'O campo de email é obrigatório.'"
+          *ngIf="email?.errors?.['required']"
+        ></app-mensagem>
+        <app-mensagem
+          [mensagem]="'O email deve ser um email válido .'"
+          *ngIf="email?.errors?.['pattern']"
+        ></app-mensagem>
       </div>
     </div>
 
