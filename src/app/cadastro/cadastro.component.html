@@ -53,7 +53,28 @@
           placeholder="(XX) XXXXX-XXXX"
           class="campo__escrita"
           ngModel
+          required
+          pattern="(\(?\d{2}\)?\s?)(\d{5}\-?\d{4})"
         />
+        <!-- usado para atualizações enquanto o usuário digita -->
+        <!-- || f.controls['telefone']?.dirty -->
+        <div
+          *ngIf="
+            f.controls['telefone']?.invalid && f.controls['telefone']?.touched
+          "
+        >
+          <span
+            class="erro__texto"
+            *ngIf="f.controls['telefone']?.errors?.['required']"
+            >O campo de telefone é obrigatório.</span
+          >
+          <span
+            class="erro__texto"
+            *ngIf="f.controls['telefone']?.errors?.['pattern']"
+          >
+            O campo de telefone deve ser um telefone válido.
+          </span>
+        </div>
       </div>
     </div>
     <div class="formulario__campo">
